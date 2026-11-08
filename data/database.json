@@ -1,0 +1,28 @@
+{
+    "suat_chieu": [
+        {
+            "ma_phim": "P01",
+            "gio_chieu": "09:00",
+            "phong": "Phong 01",
+            "ds_ghe_dadat": []
+        },
+        {
+            "ma_phim": "P02",
+            "gio_chieu": "14:00",
+            "phong": "Phong 01",
+            "ds_ghe_dadat": []
+        }
+    ],
+    "hoa_don": [
+        {
+            "ma_hd": "HD01",
+            "ten_phim": "Doraemon",
+            "gio_chieu": "09:00",
+            "ds_ghe": [
+                "A1"
+            ],
+            "tong_tien": 145000,
+            "trang_thai": "DA_HUY"
+        }
+    ]
+}

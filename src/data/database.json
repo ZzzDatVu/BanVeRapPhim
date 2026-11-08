@@ -1,0 +1,38 @@
+{
+    "suat_chieu": [
+        {
+            "ma_phim": "P01",
+            "gio_chieu": "09:00",
+            "phong": "Phong 01",
+            "ds_ghe_dadat": [
+                "A1"
+            ]
+        },
+        {
+            "ma_phim": "P02",
+            "gio_chieu": "14:00",
+            "phong": "Phong 01",
+            "ds_ghe_dadat": []
+        }
+    ],
+    "hoa_don": [
+        {
+            "ma_hd": "HD01",
+            "ten_phim": "Unknown",
+            "gio_chieu": "00:00",
+            "ds_ghe": [],
+            "tong_tien": 0,
+            "trang_thai": "DA_THANH_TOAN"
+        },
+        {
+            "ma_hd": "HD02",
+            "ten_phim": "Doraemon",
+            "gio_chieu": "09:00",
+            "ds_ghe": [
+                "A2"
+            ],
+            "tong_tien": 145000,
+            "trang_thai": "DA_HUY"
+        }
+    ]
+}
