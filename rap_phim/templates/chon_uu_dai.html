@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Ưu Đãi & Xác Nhận Hóa Đơn</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5" style="max-width: 600px;">
+        <div class="card shadow p-4">
+            <h3 class="text-center mb-3">🎁 Mã Ưu Đãi & Hóa Đơn</h3>
+
+            <form method="POST" class="mb-4" onsubmit="return xacNhanUuDai();">
+                {% csrf_token %}
+                <label class="form-label">Nhập mã giảm giá (Gợi ý: <b>GIAM10</b> hoặc <b>GIAM20</b>):</label>
+                <div class="input-group">
+                    <input type="text" id="input_ma_giam" name="ma_giam" value="{{ booking.ma_giam }}" class="form-control" placeholder="Nhập mã ưu đãi...">
+                    <button type="submit" class="btn btn-outline-primary">Áp Dụng</button>
+                </div>
+            </form>
+
+            <hr>
+
+            <h5 class="mb-3">🧾 Chi Tiết Hóa Đơn Của Bạn</h5>
+            <ul class="list-group mb-4">
+                <li class="list-group-item"><strong>Phim:</strong> {{ booking.ten_phim }} ({{ booking.gio_chieu }})</li>
+                <li class="list-group-item"><strong>Ghế đã chọn:</strong> {{ booking.ds_ghe|join:", " }} ({{ booking.tien_ghe }}đ)</li>
+                <li class="list-group-item"><strong>Combo Bắp Nước:</strong> {{ booking.ten_combo }} ({{ booking.tien_bap_nuoc }}đ)</li>
+                <li class="list-group-item"><strong>Ưu đãi ({{ booking.ma_giam|default:"Không áp dụng" }}):</strong> -{{ booking.giam_gia|default:0 }}đ</li>
+                <li class="list-group-item bg-dark text-white"><strong>Tổng thanh toán: {{ booking.tong_tien }}đ</strong></li>
+            </ul>
+
+            <form method="POST" onsubmit="return xacNhanChotDon();">
+                {% csrf_token %}
+                <input type="hidden" name="thanh_toan" value="1">
+                <button type="submit" class="btn btn-success w-100 btn-lg">Xác Nhận Đặt Vé & Thanh Toán</button>
+            </form>
+            <a href="/" class="text-center mt-3 d-block text-decoration-none">&larr; Hủy và về trang chủ</a>
+        </div>
+    </div>
+
+    <script>
+        function xacNhanUuDai() {
+            const ma = document.getElementById("input_ma_giam").value.trim();
+            if (!ma) {
+                alert("Vui lòng nhập mã ưu đãi trước khi bấm Áp Dụng!");
+                return false;
+            }
+            return confirm("Xác nhận áp dụng mã ưu đãi: " + ma.toUpperCase() + "?");
+        }
+
+        function xacNhanChotDon() {
+            if (confirm("Xác nhận thanh toán toàn bộ hóa đơn này?")) {
+                alert("🎉 Đặt vé thành công! Ghế của bạn đã được lưu vào hệ thống.");
+                return true;
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>

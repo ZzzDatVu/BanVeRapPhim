@@ -1,28 +1,122 @@
 {
     "suat_chieu": [
         {
-            "ma_phim": "P01",
-            "gio_chieu": "09:00",
-            "phong": "Phong 01",
+            "ma_suat": "SC03",
+            "ma_phim": "P03",
+            "ten_phim": "Nhà ba tôi một phòng",
+            "thoi_luong": "120",
+            "ma_phong": "ROOM01",
+            "ten_phong": "Phòng 1",
+            "gio_chieu": "09:30",
+            "ds_ghe_dadat": [
+                "D2",
+                "D1"
+            ]
+        },
+        {
+            "ma_suat": "SC04",
+            "ma_phim": "P04",
+            "ten_phim": "Nhà ba tôi một phòng",
+            "thoi_luong": "120",
+            "ma_phong": "ROOM01",
+            "ten_phong": "Phòng 1",
+            "gio_chieu": "10:00",
             "ds_ghe_dadat": []
         },
         {
-            "ma_phim": "P02",
-            "gio_chieu": "14:00",
-            "phong": "Phong 01",
+            "ma_suat": "SC03",
+            "ma_phim": "P03",
+            "ten_phim": "Nhà ba tôi một phòng",
+            "thoi_luong": "120",
+            "ma_phong": "ROOM01",
+            "ten_phong": "Phòng 1",
+            "gio_chieu": "09:00",
+            "ds_ghe_dadat": []
+        },
+        {
+            "ma_suat": "SC04",
+            "ma_phim": "P04",
+            "ten_phim": "Thỏ ơi",
+            "thoi_luong": "127",
+            "ma_phong": "ROOM01",
+            "ten_phong": "Phòng 1",
+            "gio_chieu": "09:30",
             "ds_ghe_dadat": []
         }
     ],
     "hoa_don": [
         {
-            "ma_hd": "HD01",
-            "ten_phim": "Doraemon",
-            "gio_chieu": "09:00",
+            "ma_suat": "SC01",
             "ds_ghe": [
-                "A1"
+                "C1",
+                "C2"
             ],
-            "tong_tien": 145000,
-            "trang_thai": "DA_HUY"
+            "tien_ghe": 100000,
+            "ten_phim": "Nhà ba tôi một phòng",
+            "gio_chieu": "09:00",
+            "bap": 1,
+            "nuoc": 1,
+            "tien_bap_nuoc": 60000,
+            "tong_tien": 160000,
+            "ma_giam": "GIAM50",
+            "giam_gia": 0
+        },
+        {
+            "ma_suat": "SC01",
+            "ds_ghe": [
+                "C3",
+                "C4"
+            ],
+            "tien_ghe": 100000,
+            "ten_phim": "Nhà ba tôi một phòng",
+            "gio_chieu": "09:00",
+            "tien_bap_nuoc": 110000,
+            "ten_combo": "Combo Gia Đình (2 Bắp + 2 Nước)",
+            "tong_tien": 190000,
+            "ma_giam": "GIAM20",
+            "giam_gia": 20000
+        },
+        {
+            "ma_suat": "SC01",
+            "ds_ghe": [
+                "C5",
+                "D5"
+            ],
+            "tien_ghe": 100000,
+            "ten_phim": "Nhà ba tôi một phòng",
+            "gio_chieu": "09:00",
+            "tien_bap_nuoc": 80000,
+            "ten_combo": "Combo 2 (1 Bắp + 2 Nước)",
+            "tong_tien": 180000
+        },
+        {
+            "ma_suat": "SC02",
+            "ds_ghe": [
+                "B3",
+                "B4"
+            ],
+            "tien_ghe": 100000,
+            "ten_phim": "Thỏ ơi",
+            "gio_chieu": "09:15",
+            "tien_bap_nuoc": 80000,
+            "ten_combo": "Combo 2 (1 Bắp + 2 Nước)",
+            "tong_tien": 180000
+        },
+        {
+            "ma_suat": "SC03",
+            "ds_ghe": [
+                "D1",
+                "D2"
+            ],
+            "tien_ghe": 100000,
+            "ten_phim": "Nhà ba tôi một phòng",
+            "gio_chieu": "09:30",
+            "nguoi_dat": "ryan",
+            "tien_bap_nuoc": 0,
+            "ten_combo": "Không mua Combo",
+            "tong_tien": 90000,
+            "ma_giam": "GIAM10",
+            "giam_gia": 10000
         }
     ]
 }

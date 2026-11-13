@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Trị Hệ Thống Rạp Phim</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>🛠️ Trang Quản Trị Hệ Thống Rạp Phim</h2>
+            <div>
+                <span class="me-3">Xin chào, <b>{{ current_user }}</b></span>
+                <a href="/dang-xuat/" class="btn btn-outline-danger btn-sm">Đăng Xuất</a>
+            </div>
+        </div>
+
+        <!-- Form Thêm Suất Chiếu Mới -->
+        <div class="card shadow p-4 mb-4">
+            <h4 class="mb-3">Thêm Suất Chiếu Mới</h4>
+            <form method="POST" class="row g-3">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="them">
+                <div class="col-md-4">
+                    <label class="form-label">Tên Phim</label>
+                    <input type="text" name="ten_phim" class="form-control" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Thời lượng (Phút)</label>
+                    <input type="text" name="thoi_luong" class="form-control" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Giờ chiếu</label>
+                    <input type="text" name="gio_chieu" class="form-control" placeholder="Ví dụ: 19:30" required>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-success w-100">Thêm Suất</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Danh sách suất chiếu & Xóa -->
+        <div class="card shadow p-4 mb-4">
+            <h4 class="mb-3">Danh Sách Suất Chiếu Hiện Tại</h4>
+            <table class="table table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Mã Suất</th>
+                        <th>Tên Phim</th>
+                        <th>Giờ Chiếu</th>
+                        <th>Ghế Đã Đặt</th>
+                        <th>Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sc in ds_suat_chieu %}
+                    <tr>
+                        <td>{{ sc.ma_suat }}</td>
+                        <td>{{ sc.phim.ten_phim }}</td>
+                        <td>{{ sc.gio_chieu }}</td>
+                        <td>
+                            {% if sc.ds_ghe_dadat %}
+                                <span class="text-danger fw-bold">{{ sc.ds_ghe_dadat|join:", " }}</span>
+                            {% else %}
+                                <span class="text-muted">Chưa có ghế đặt</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form method="POST" style="display:inline;" onsubmit="return confirm('Xác nhận xóa suất chiếu này?');">
+                                {% csrf_token %}
+                                <input type="hidden" name="action" value="xoa">
+                                <input type="hidden" name="ma_suat" value="{{ sc.ma_suat }}">
+                                <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="5" class="text-center text-muted">Chưa có suất chiếu nào.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Danh sách toàn bộ hóa đơn khách đã đặt -->
+        <div class="card shadow p-4">
+            <h4 class="mb-3">📋 Thống Kê Toàn Bộ Hóa Đơn Khách Đặt</h4>
+            <table class="table table-striped align-middle">
+                <thead class="table-secondary">
+                    <tr>
+                        <th>Người Đặt</th>
+                        <th>Phim & Suất</th>
+                        <th>Ghế</th>
+                        <th>Combo Bắp Nước</th>
+                        <th>Tổng Tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hd in ds_hoa_don %}
+                    <tr>
+                        <td><b>{{ hd.nguoi_dat|default:"Khách vãng lai" }}</b></td>
+                        <td>{{ hd.ten_phim }} ({{ hd.gio_chieu }})</td>
+                        <td><span class="badge bg-primary">{{ hd.ds_ghe|join:", " }}</span></td>
+                        <td>{{ hd.ten_combo|default:"Không" }}</td>
+                        <td class="text-success fw-bold">{{ hd.tong_tien }}đ</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="5" class="text-center text-muted">Chưa có hóa đơn nào được thanh toán.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">&larr; Về trang chủ khách hàng</a>
+        </div>
+    </div>
+</body>
+</html>
