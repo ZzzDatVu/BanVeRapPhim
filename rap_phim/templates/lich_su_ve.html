@@ -22,6 +22,7 @@
                             <strong>🪑 Ghế đã đặt:</strong> <span class="text-danger fw-bold">{{ hd.ds_ghe|join:", " }}</span><br>
                             <strong>🍿 Combo:</strong> {{ hd.ten_combo|default:"Không có" }}<br>
                             <strong>🎁 Ưu đãi:</strong> {{ hd.ma_giam|default:"Không có" }}<br>
+                            <img src="{{ hd.qr_code }}" alt="Mã QR vé xem phim" width="150">
                             <div class="mt-2 text-end">
                                 <strong class="text-success fs-5">Tổng tiền: {{ hd.tong_tien }}đ</strong>
                             </div>

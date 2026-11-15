@@ -26,3 +26,4 @@ class SuatChieu:
         self.phong = phong
         self.gio_chieu = gio_chieu
         self.ds_ghe_dadat = set()
+
